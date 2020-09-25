@@ -2,10 +2,14 @@
     <div>
         <el-card shadow="never">
             <el-menu :default-active="active" @select="onSelect">
-                <el-menu-item v-for="item in constantRouterMap" v-if="item.meta&&item.meta.type=='user'&&(token||!item.meta.LoginRequired)&&(!mini||!item.meta.mini)"
+                <!-- <el-menu-item v-for="item in constantRouterMap" v-if="item.meta&&item.meta.type=='user'&&(token||!item.meta.LoginRequired)&&(!mini||!item.meta.mini)"
                     :key="item.path" :index="item.path">
                     <i :class="item.meta.icon"></i>
                     <span slot="title">{{item.meta.title}}</span>
+                </el-menu-item> -->
+                <el-menu-item>
+                    <i></i>
+                    <span slot="title">test</span>
                 </el-menu-item>
             </el-menu>
         </el-card>
@@ -31,7 +35,7 @@
 
 <script>
     import { mapGetters } from 'vuex'
-    import { constantRouterMap } from '@/router'
+    // import { constantRouterMap } from '@/router'
     import TokenDialog from '@/views/common/TokenDialog'
     export default {
         components: {
@@ -39,7 +43,7 @@
         },
         data() {
             return {
-                constantRouterMap,
+                // constantRouterMap,
                 active: "",
                 parentUrl: "",
                 menuList: []

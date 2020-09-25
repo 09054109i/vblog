@@ -26,7 +26,7 @@ import MobileSelfMain from '@/mobile_views/self/Main'
 
 
 
-Vue.use(Router)
+// Vue.use(Router)
 
 export const constantRouterMap = [
 
