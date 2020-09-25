@@ -20,6 +20,7 @@
 
 <script>
 export default {
+  name:"IndexPage",
   metaInfo: {
     title: 'Hello, world!'
   }
