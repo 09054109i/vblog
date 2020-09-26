@@ -161,24 +161,25 @@
                 console.log(this.$refs.music.currentTime)
             }
         },
+        // mounted() {
+        //     this.$nextTick(() => {
+        //         setInterval(this.listenMusic, 1000)
+        //     })
+        //     let width = window.innerWidth
+        //     for (let i = 0; i < 12; i++) {
+        //         let temp = {}
+        //         let left = this.$util.randomInt(10, width - 310)
+        //         if(left>width/2-150){
+        //             left+=300
+        //         }
+        //         temp["left"] = left
+        //         temp["top"] = this.$util.randomInt(20, 300)
+        //         temp["size"] = this.$util.randomInt(20, 40)
+        //         this.randomIcon.push(temp)
+        //     }
+        // },
         mounted() {
-            this.$nextTick(() => {
-                setInterval(this.listenMusic, 1000)
-            })
-            let width = window.innerWidth
-            for (let i = 0; i < 12; i++) {
-                let temp = {}
-                let left = this.$util.randomInt(10, width - 310)
-                if(left>width/2-150){
-                    left+=300
-                }
-                temp["left"] = left
-                temp["top"] = this.$util.randomInt(20, 300)
-                temp["size"] = this.$util.randomInt(20, 40)
-                this.randomIcon.push(temp)
-            }
-        },
-        created() {
+            console.log("created")
             this.$store.dispatch("Init")
             this.$store.dispatch("GetInfo")
             this.$setTitle(this.$route.meta.title)
@@ -351,14 +352,5 @@
         color: #586069 !important;
         word-wrap: break-word;
     }
-
-    .fade-enter-active,
-    .fade-leave-active {
-        transition: opacity .2s;
-    }
-
-    .fade-enter,
-    .fade-leave-to {
-        opacity: 0;
-    }
+    
 </style>

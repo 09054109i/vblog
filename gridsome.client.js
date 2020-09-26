@@ -1,9 +1,25 @@
+import mavonEditor from 'mavon-editor'
+import ElementUI from 'element-ui'
+import Vant from 'vant'
+
 import util from './src/utils/util'
 import store from './src/store/'
 
 export default function (Vue, options, context) {
+    console.log(context)
+    Vue.use(Vant)
+    Vue.use(ElementUI)
+    Vue.use(mavonEditor)
+
     context.appOptions.store = store
 
+    //解决在当前页面“/”跳转“/”报错问题
+    const originalPush = context.appOptions.router.push
+    context.appOptions.router.push = function push(location) {
+        console.log('hello')
+      return originalPush.call(this, location).catch(err => err)
+    }
+    
   
   
     Vue.prototype.$markdown = function (value) {

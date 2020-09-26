@@ -2,15 +2,14 @@
     <div>
         <el-card shadow="never">
             <el-menu :default-active="active" @select="onSelect">
-                <!-- <el-menu-item v-for="item in constantRouterMap" v-if="item.meta&&item.meta.type=='user'&&(token||!item.meta.LoginRequired)&&(!mini||!item.meta.mini)"
-                    :key="item.path" :index="item.path">
+                <el-menu-item v-for="item in constantRouterMap" :key="item.path" :index="item.path">
                     <i :class="item.meta.icon"></i>
                     <span slot="title">{{item.meta.title}}</span>
-                </el-menu-item> -->
-                <el-menu-item>
+                </el-menu-item>
+                <!-- <el-menu-item>
                     <i></i>
                     <span slot="title">test</span>
-                </el-menu-item>
+                </el-menu-item> -->
             </el-menu>
         </el-card>
         <el-card shadow="never" style="margin-top: 20px;text-align: center">
@@ -42,7 +41,40 @@
         },
         data() {
             return {
-                // constantRouterMap,
+                constantRouterMap:[
+                                    {
+                                        path: '/',
+                                        meta: {
+                                            type: "user",
+                                            icon: 'el-icon-star-off',
+                                            title: '最新动态'
+                                        }
+                                    },
+                                    {
+                                        path: '/social',
+                                        meta: {
+                                            type: "social",
+                                            icon: 'el-icon-mobile-phone',
+                                            title: '社交圈'
+                                        }
+                                    },
+                                    {
+                                        path: '/blog',
+                                        meta: {
+                                            type: "blog",
+                                            icon: 'el-icon-edit-outline',
+                                            title: '博客列表'
+                                        }
+                                    },
+                                    {
+                                        path: '/project',
+                                        meta: {
+                                            type: "project",
+                                            icon: 'el-icon-service',
+                                            title: '开源项目'
+                                        }
+                                    }
+                                ],
                 active: "",
                 parentUrl: "",
                 menuList: []
