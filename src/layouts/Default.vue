@@ -91,7 +91,12 @@
                     <sidebar></sidebar>
                 </el-col>
                 <el-col :span="18" style="padding-left:10px">
-                    <app-main></app-main>
+                    <section>
+                        <transition>
+                        <!-- <router-view></router-view> -->
+                            <slot/>
+                        </transition>
+                    </section>
                 </el-col>
             </el-row>
 
@@ -99,8 +104,6 @@
         <section class="foot">
             <foot></foot>
         </section>
-
-
     </div>
 </template>
 <script>
@@ -347,5 +350,15 @@
         font-size: 12px !important;
         color: #586069 !important;
         word-wrap: break-word;
+    }
+
+    .fade-enter-active,
+    .fade-leave-active {
+        transition: opacity .2s;
+    }
+
+    .fade-enter,
+    .fade-leave-to {
+        opacity: 0;
     }
 </style>

@@ -1,7 +1,8 @@
 <template>
     <section>
         <transition name="fade">
-            <router-view></router-view>
+            <!-- <router-view></router-view> -->
+            <slot/>
         </transition>
     </section>
 </template>
