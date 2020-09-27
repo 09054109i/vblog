@@ -33,7 +33,7 @@ export default function (Vue, context) {
   }
   context.appOptions.router.beforeEach((to, from, next) => {
       if(to.path==="/"){
-          context.appOptions.router.push('/project')
+          context.appOptions.router.push('/projects')
       }
       Vue.prototype.$setTitle(to.meta.title)
       next()

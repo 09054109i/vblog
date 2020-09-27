@@ -6,5 +6,13 @@
 
 module.exports = {
   siteName: 'Gridsome',
-  plugins: []
+  plugins: [],
+  templates:{
+    Project:[
+      {
+        path:'/posts/:id',
+        component:'./src/templates/Project.vue'
+      }
+    ]
+  }
 }

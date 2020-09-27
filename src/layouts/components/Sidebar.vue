@@ -67,7 +67,7 @@
                                         }
                                     },
                                     {
-                                        path: '/project',
+                                        path: '/projects',
                                         meta: {
                                             type: "project",
                                             icon: 'el-icon-service',

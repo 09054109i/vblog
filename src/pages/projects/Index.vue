@@ -13,7 +13,7 @@
                     <el-row>
                         <el-col :span="16">
                             <span>
-                                <a style="text-decoration:none;cursor:pointer" @click="goDetails(item.node.name)">
+                                <a style="text-decoration:none;cursor:pointer" @click="goDetails(item.node.id)">
                                     <i class="el-icon-service"></i>&nbsp;&nbsp; {{item.node.name}}
                                 </a>
                             </span>
@@ -163,8 +163,8 @@
                     this.$page.projects.edges[i].node.hide = this.$page.projects.edges[i].node.name.indexOf(this.searchKey) < 0
                 }
             },
-            goDetails(name) {
-                this.$router.push("/user/project/details/" + name)
+            goDetails(id) {
+                this.$router.push("/posts/" + id)
             },
             goGithub(url) {
                 window.open(url)
