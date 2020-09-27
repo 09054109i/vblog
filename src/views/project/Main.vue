@@ -96,6 +96,11 @@
             list() {
                 this.loading = true
                 ProjectApi.list(this.query).then((response) => {
+                    console.log("response")
+
+                    console.log(response)
+                    console.log(this.$util)
+
                     let result = response.data
                     let pageNumber = this.$util.parseHeaders(response.headers)
                     if (pageNumber) {
