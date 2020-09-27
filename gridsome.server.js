@@ -4,10 +4,18 @@
 
 // Changes here require a server restart.
 // To restart press CTRL + C in terminal and run `gridsome develop`
-
+const ProjectApi = require("./src/api/project")
 module.exports = function (api) {
-  api.loadSource(({ addCollection }) => {
+  api.loadSource(async ({ addCollection }) => {
     // Use the Data Store API here: https://gridsome.org/docs/data-store-api/
+    const collection = addCollection('Project')
+    const query={
+                    page: 1,
+                    pageSize: 5,
+                    pageNumber: 1
+                }
+    const { data } = await ProjectApi.list(query);
+    console.log(data)
   })
 
   api.createPages(({ createPage }) => {

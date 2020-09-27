@@ -57,8 +57,6 @@ const configuration = {
             }
             xmlhttp.open("GET", "../../../configuration.json", false)
             xmlhttp.send()
-            console.log("configuration")
-            console.log(xmlhttp.responseText)
             let configuration = JSON.parse(xmlhttp.responseText)
             commit('SET_CONFIGURATION', configuration)
         }

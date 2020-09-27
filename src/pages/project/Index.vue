@@ -75,6 +75,7 @@
     import { mapGetters } from 'vuex'
     import ProjectApi from "@/api/project"
     export default {
+        name:"ProjectIndex",
         data() {
             return {
                 query: {

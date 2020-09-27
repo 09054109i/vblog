@@ -25,6 +25,7 @@
 <script>
     import GistApi from '@/api/gist'
     export default {
+        name:"NewUserIndex",
         data() {
             return {
                 query: {

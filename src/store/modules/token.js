@@ -1,6 +1,6 @@
 import Cookie from '@/utils/cookie'
 import UserApi from '@/api/user'
-import store from '../index'
+// import store from '../index'
 import Vue from 'vue'
 
 const TOKEN_KEY = "TOKEN_KEY"
@@ -25,11 +25,11 @@ const token = {
     },
 
     actions: {
-        Authentication({ commit,state }, accessToken) {
-            console.log(state)
+        Authentication({ commit,rootState }, accessToken) {
             UserApi.verifyToken(accessToken).then((response) => {
+
                 let result = response.data
-                let githubUsername = state.configuration.githubUsername
+                let githubUsername = rootState.configuration.githubUsername
                 if (githubUsername == result['login']) {
                     commit('SET_TOKEN', accessToken)
                     Vue.prototype.$notify({

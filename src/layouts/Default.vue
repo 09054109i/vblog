@@ -179,7 +179,6 @@
         //     }
         // },
         mounted() {
-            console.log("created")
             this.$store.dispatch("Init")
             this.$store.dispatch("GetInfo")
             this.$setTitle(this.$route.meta.title)

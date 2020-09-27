@@ -56,6 +56,7 @@
     import { mapGetters } from 'vuex'
     import GistApi from '@/api/gist'
     export default {
+        name:"blogIndex",
         data() {
             return {
                 query: {

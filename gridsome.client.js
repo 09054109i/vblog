@@ -6,7 +6,6 @@ import util from './src/utils/util'
 import store from './src/store/'
 
 export default function (Vue, options, context) {
-    console.log(context)
     Vue.use(Vant)
     Vue.use(ElementUI)
     Vue.use(mavonEditor)
@@ -16,10 +15,15 @@ export default function (Vue, options, context) {
     //解决在当前页面“/”跳转“/”报错问题
     const originalPush = context.appOptions.router.push
     context.appOptions.router.push = function push(location) {
-        console.log('hello')
       return originalPush.call(this, location).catch(err => err)
     }
-    
+    context.appOptions.router.beforeEach((to, from, next) => {
+        if(to.path==="/"){
+            context.appOptions.router.push('/project')
+        }
+        Vue.prototype.$setTitle(to.meta.title)
+        next()
+    })
   
   
     Vue.prototype.$markdown = function (value) {

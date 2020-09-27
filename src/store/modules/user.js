@@ -35,9 +35,7 @@ const user = {
     actions: {
         GetInfo({ commit }) {
             UserApi.getInfo().then((response) => {
-                console.log("result")
                 let result = response.data
-                console.log(result)
 
                 commit('SET_AVATAR_URL', result['avatar_url'])
                 commit('SET_NAME', result['name'])

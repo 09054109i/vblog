@@ -68,6 +68,7 @@
     import { mapGetters } from 'vuex'
     import UserApi from '@/api/user'
     export default {
+        name:"SocialIndex",
         data() {
             return {
                 activeTab: "followers",
