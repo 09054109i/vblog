@@ -34,16 +34,16 @@ const user = {
 
     actions: {
         GetInfo({ commit }) {
-            // UserApi.getInfo().then((response) => {
-            //     let result = response.data
+            UserApi.getInfo().then((response) => {
+                let result = response.data
 
-            //     commit('SET_AVATAR_URL', result['avatar_url'])
-            //     commit('SET_NAME', result['name'])
-            //     commit('SET_LOCATION', result['location'])
-            //     commit('SET_BLOG', result['blog'])
-            //     commit('SET_FOLLOWERS', result['followers'])
-            //     commit('SET_FOLLOWING', result['following'])
-            // })
+                commit('SET_AVATAR_URL', result['avatar_url'])
+                commit('SET_NAME', result['name'])
+                commit('SET_LOCATION', result['location'])
+                commit('SET_BLOG', result['blog'])
+                commit('SET_FOLLOWERS', result['followers'])
+                commit('SET_FOLLOWING', result['following'])
+            })
 
         }
     }

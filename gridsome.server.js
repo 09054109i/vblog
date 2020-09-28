@@ -6,55 +6,72 @@
 // To restart press CTRL + C in terminal and run `gridsome develop`
 const axios = require('axios')
 const baseUrl = "https://api.github.com"
-const token = "8d6037cd4cf044138ee9366906a34e528d89b42a"
+const token = "6d9a345019577b3f472f484d3c51f9f16ffb496d"
 const githubUsername = "09054109i"
 
-const initRequestService = ()=>{
-    const service = axios.create({
-      baseURL: baseUrl,
-      timeout: 15000
-    })
-    return service
-}
+// const store = require("./src/store/index.js")
+const service = axios.create({
+  baseURL: "https://api.github.com",
+  timeout: 15000
+})
+// service.interceptors.response.use(
+//   config => {
+//     console.log("config11")
+//     let token = "6d9a345019577b3f472f484d3c51f9f16ffb496d"
+//     if (token) {
+//           let sp = "?"
+//           console.log("config.url")
+//           // console.log(config)
+//           console.log("config.url1")
 
-const serviceInter=(service)=>{
-  service.interceptors.response.use(
-      response => {
-          let responseJson = response.data
-          return response
-      },
-      error => {
-          let message
-          switch (error.response.status) {
-              case 401:
-                  message = "Token错误"
-                  break
-              default:
-                  message = error.response.data.message
-                  break
-          }
-          // Vue.prototype.$message({
-          //     message: message,
-          //     type: 'error'
-          // })
-          return Promise.reject('error')
-      }
-  )
-}
+//           console.log(config.url)
+//           console.log("config.ur2")
 
-const getAllProject = async (service)=>{
+//           if (config.url.indexOf("?") >= 0) {
+//               sp = "&"
+//           }
+//           config.url = config.url + sp + "access_token=" + token
+//       }
+//       return config
+//   },
+//   response => {
+//       let responseJson = response.data
+//       return response
+//   },
+//   error => {
+//       let message
+//       switch (error.response.status) {
+//           case 401:
+//               message = "Token错误"
+//               break
+//           default:
+//               message = error.response.data.message
+//               break
+//       }
+//       // Vue.prototype.$message({
+//       //     message: message,
+//       //     type: 'error'
+//       // })
+//       return Promise.reject('error')
+//   }
+// )
+
+const getAllProject = async ()=>{
     const query={
         page: 1,
         pageSize: 5,
         pageNumber: 1
     }
     // const url = `/users/${githubUsername}/repos?page=${query.page}&per_page=${query.pageSize}&access_token=${token}`
+    // const url = `/users/${githubUsername}/repos`
     const url = `/users/${githubUsername}/repos?access_token=${token}`
+
     console.log(url)
-    // const { data } = await service({
+    // const response = await service({
     //     url,
     //     method:"GET"
     // })
+
     const data = await [
       {
         id: 298225841,
@@ -250,17 +267,341 @@ const getAllProject = async (service)=>{
     return data
 }
 
+const getAllFollower = async ()=>{
+  const query={
+      page: 1,
+      pageSize: 5,
+      pageNumber: 1
+  }
+  // const url = `/users/${githubUsername}/repos?page=${query.page}&per_page=${query.pageSize}&access_token=${token}`
+  const url =  `/users/${githubUsername}/followers?access_token=${token}`
+  console.log(url)
+  // const { data } = await service({
+  //     url,
+  //     method:"GET"
+  // })
+  // console.log(data)
+  const data = [
+    {
+      login: '363797271',
+      id: 29295250,
+      node_id: 'MDQ6VXNlcjI5Mjk1MjUw',
+      avatar_url: 'https://avatars2.githubusercontent.com/u/29295250?v=4',
+      gravatar_id: '',
+      url: 'https://api.github.com/users/363797271',
+      html_url: 'https://github.com/363797271',
+      followers_url: 'https://api.github.com/users/363797271/followers',
+      following_url: 'https://api.github.com/users/363797271/following{/other_user}',
+      gists_url: 'https://api.github.com/users/363797271/gists{/gist_id}',
+      starred_url: 'https://api.github.com/users/363797271/starred{/owner}{/repo}',
+      subscriptions_url: 'https://api.github.com/users/363797271/subscriptions',
+      organizations_url: 'https://api.github.com/users/363797271/orgs',
+      repos_url: 'https://api.github.com/users/363797271/repos',
+      events_url: 'https://api.github.com/users/363797271/events{/privacy}',
+      received_events_url: 'https://api.github.com/users/363797271/received_events',
+      type: 'User',
+      site_admin: false
+    },
+    {
+      login: 'SoutheastAsiaSniper',
+      id: 47980936,
+      node_id: 'MDQ6VXNlcjQ3OTgwOTM2',
+      avatar_url: 'https://avatars3.githubusercontent.com/u/47980936?v=4',
+      gravatar_id: '',
+      url: 'https://api.github.com/users/SoutheastAsiaSniper',
+      html_url: 'https://github.com/SoutheastAsiaSniper',
+      followers_url: 'https://api.github.com/users/SoutheastAsiaSniper/followers',
+      following_url: 'https://api.github.com/users/SoutheastAsiaSniper/following{/other_user}',
+      gists_url: 'https://api.github.com/users/SoutheastAsiaSniper/gists{/gist_id}',
+      starred_url: 'https://api.github.com/users/SoutheastAsiaSniper/starred{/owner}{/repo}',
+      subscriptions_url: 'https://api.github.com/users/SoutheastAsiaSniper/subscriptions',
+      organizations_url: 'https://api.github.com/users/SoutheastAsiaSniper/orgs',
+      repos_url: 'https://api.github.com/users/SoutheastAsiaSniper/repos',
+      events_url: 'https://api.github.com/users/SoutheastAsiaSniper/events{/privacy}',
+      received_events_url: 'https://api.github.com/users/SoutheastAsiaSniper/received_events',
+      type: 'User',
+      site_admin: false
+    },
+    {
+      login: 'laugh0608',
+      id: 48167499,
+      node_id: 'MDQ6VXNlcjQ4MTY3NDk5',
+      avatar_url: 'https://avatars1.githubusercontent.com/u/48167499?v=4',
+      gravatar_id: '',
+      url: 'https://api.github.com/users/laugh0608',
+      html_url: 'https://github.com/laugh0608',
+      followers_url: 'https://api.github.com/users/laugh0608/followers',
+      following_url: 'https://api.github.com/users/laugh0608/following{/other_user}',
+      gists_url: 'https://api.github.com/users/laugh0608/gists{/gist_id}',
+      starred_url: 'https://api.github.com/users/laugh0608/starred{/owner}{/repo}',
+      subscriptions_url: 'https://api.github.com/users/laugh0608/subscriptions',
+      organizations_url: 'https://api.github.com/users/laugh0608/orgs',
+      repos_url: 'https://api.github.com/users/laugh0608/repos',
+      events_url: 'https://api.github.com/users/laugh0608/events{/privacy}',
+      received_events_url: 'https://api.github.com/users/laugh0608/received_events',
+      type: 'User',
+      site_admin: false
+    }
+  ]
+  return data
+}
+
+const getAllFollowing = async ()=>{
+  const query={
+      page: 1,
+      pageSize: 5,
+      pageNumber: 1
+  }
+  // const url = `/users/${githubUsername}/repos?page=${query.page}&per_page=${query.pageSize}&access_token=${token}`
+  const url =  `/users/${githubUsername}/following?access_token=${token}`
+  console.log(url)
+  // const { data } = await service({
+  //     url,
+  //     method:"GET"
+  // })
+  // console.log(data)
+  const data = [
+    {
+      login: '363797271',
+      id: 29295250,
+      node_id: 'MDQ6VXNlcjI5Mjk1MjUw',
+      avatar_url: 'https://avatars2.githubusercontent.com/u/29295250?v=4',
+      gravatar_id: '',
+      url: 'https://api.github.com/users/363797271',
+      html_url: 'https://github.com/363797271',
+      followers_url: 'https://api.github.com/users/363797271/followers',
+      following_url: 'https://api.github.com/users/363797271/following{/other_user}',
+      gists_url: 'https://api.github.com/users/363797271/gists{/gist_id}',
+      starred_url: 'https://api.github.com/users/363797271/starred{/owner}{/repo}',
+      subscriptions_url: 'https://api.github.com/users/363797271/subscriptions',
+      organizations_url: 'https://api.github.com/users/363797271/orgs',
+      repos_url: 'https://api.github.com/users/363797271/repos',
+      events_url: 'https://api.github.com/users/363797271/events{/privacy}',
+      received_events_url: 'https://api.github.com/users/363797271/received_events',
+      type: 'User',
+      site_admin: false
+    },
+    {
+      login: 'SoutheastAsiaSniper',
+      id: 47980936,
+      node_id: 'MDQ6VXNlcjQ3OTgwOTM2',
+      avatar_url: 'https://avatars3.githubusercontent.com/u/47980936?v=4',
+      gravatar_id: '',
+      url: 'https://api.github.com/users/SoutheastAsiaSniper',
+      html_url: 'https://github.com/SoutheastAsiaSniper',
+      followers_url: 'https://api.github.com/users/SoutheastAsiaSniper/followers',
+      following_url: 'https://api.github.com/users/SoutheastAsiaSniper/following{/other_user}',
+      gists_url: 'https://api.github.com/users/SoutheastAsiaSniper/gists{/gist_id}',
+      starred_url: 'https://api.github.com/users/SoutheastAsiaSniper/starred{/owner}{/repo}',
+      subscriptions_url: 'https://api.github.com/users/SoutheastAsiaSniper/subscriptions',
+      organizations_url: 'https://api.github.com/users/SoutheastAsiaSniper/orgs',
+      repos_url: 'https://api.github.com/users/SoutheastAsiaSniper/repos',
+      events_url: 'https://api.github.com/users/SoutheastAsiaSniper/events{/privacy}',
+      received_events_url: 'https://api.github.com/users/SoutheastAsiaSniper/received_events',
+      type: 'User',
+      site_admin: false
+    },
+    {
+      login: 'laugh0608',
+      id: 48167499,
+      node_id: 'MDQ6VXNlcjQ4MTY3NDk5',
+      avatar_url: 'https://avatars1.githubusercontent.com/u/48167499?v=4',
+      gravatar_id: '',
+      url: 'https://api.github.com/users/laugh0608',
+      html_url: 'https://github.com/laugh0608',
+      followers_url: 'https://api.github.com/users/laugh0608/followers',
+      following_url: 'https://api.github.com/users/laugh0608/following{/other_user}',
+      gists_url: 'https://api.github.com/users/laugh0608/gists{/gist_id}',
+      starred_url: 'https://api.github.com/users/laugh0608/starred{/owner}{/repo}',
+      subscriptions_url: 'https://api.github.com/users/laugh0608/subscriptions',
+      organizations_url: 'https://api.github.com/users/laugh0608/orgs',
+      repos_url: 'https://api.github.com/users/laugh0608/repos',
+      events_url: 'https://api.github.com/users/laugh0608/events{/privacy}',
+      received_events_url: 'https://api.github.com/users/laugh0608/received_events',
+      type: 'User',
+      site_admin: false
+    }
+  ]
+  return data
+}
+
+const getAllBlog = async ()=>{
+  const query={
+      page: 1,
+      pageSize: 5,
+      pageNumber: 1
+  }
+  // const url = `/users/${githubUsername}/repos?page=${query.page}&per_page=${query.pageSize}&access_token=${token}`
+  const url =  `/users/${githubUsername}/gists?access_token=${token}`
+  console.log(url)
+  // const { data } = await service({
+  //     url,
+  //     method:"GET"
+  // })
+  const data = [
+  {
+    "url": "https://api.github.com/gists/071516fd19fc08c3ef05a1ecda12bb99",
+    "forks_url": "https://api.github.com/gists/071516fd19fc08c3ef05a1ecda12bb99/forks",
+    "commits_url": "https://api.github.com/gists/071516fd19fc08c3ef05a1ecda12bb99/commits",
+    "id": "071516fd19fc08c3ef05a1ecda12bb99",
+    "node_id": "MDQ6R2lzdDA3MTUxNmZkMTlmYzA4YzNlZjA1YTFlY2RhMTJiYjk5",
+    "git_pull_url": "https://gist.github.com/071516fd19fc08c3ef05a1ecda12bb99.git",
+    "git_push_url": "https://gist.github.com/071516fd19fc08c3ef05a1ecda12bb99.git",
+    "html_url": "https://gist.github.com/071516fd19fc08c3ef05a1ecda12bb99",
+    "files": {
+      "3": {
+        "filename": "3",
+        "type": "text/plain",
+        "language": null,
+        "raw_url": "https://gist.githubusercontent.com/09054109i/071516fd19fc08c3ef05a1ecda12bb99/raw/e440e5c842586965a7fb77deda2eca68612b1f53/3",
+        "size": 1
+      }
+    },
+    "public": true,
+    "created_at": "2020-09-24T10:06:01Z",
+    "updated_at": "2020-09-24T10:06:01Z",
+    "description": "3",
+    "comments": 0,
+    "user": null,
+    "comments_url": "https://api.github.com/gists/071516fd19fc08c3ef05a1ecda12bb99/comments",
+    "owner": {
+      "login": "09054109i",
+      "id": 67500835,
+      "node_id": "MDQ6VXNlcjY3NTAwODM1",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/67500835?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/09054109i",
+      "html_url": "https://github.com/09054109i",
+      "followers_url": "https://api.github.com/users/09054109i/followers",
+      "following_url": "https://api.github.com/users/09054109i/following{/other_user}",
+      "gists_url": "https://api.github.com/users/09054109i/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/09054109i/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/09054109i/subscriptions",
+      "organizations_url": "https://api.github.com/users/09054109i/orgs",
+      "repos_url": "https://api.github.com/users/09054109i/repos",
+      "events_url": "https://api.github.com/users/09054109i/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/09054109i/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "truncated": false
+  },
+  {
+    "url": "https://api.github.com/gists/e746c755bfe03c4b7eaa9e3e77f709f7",
+    "forks_url": "https://api.github.com/gists/e746c755bfe03c4b7eaa9e3e77f709f7/forks",
+    "commits_url": "https://api.github.com/gists/e746c755bfe03c4b7eaa9e3e77f709f7/commits",
+    "id": "e746c755bfe03c4b7eaa9e3e77f709f7",
+    "node_id": "MDQ6R2lzdGU3NDZjNzU1YmZlMDNjNGI3ZWFhOWUzZTc3ZjcwOWY3",
+    "git_pull_url": "https://gist.github.com/e746c755bfe03c4b7eaa9e3e77f709f7.git",
+    "git_push_url": "https://gist.github.com/e746c755bfe03c4b7eaa9e3e77f709f7.git",
+    "html_url": "https://gist.github.com/e746c755bfe03c4b7eaa9e3e77f709f7",
+    "files": {
+      "2": {
+        "filename": "2",
+        "type": "text/plain",
+        "language": null,
+        "raw_url": "https://gist.githubusercontent.com/09054109i/e746c755bfe03c4b7eaa9e3e77f709f7/raw/d8263ee9860594d2806b0dfd1bfd17528b0ba2a4/2",
+        "size": 1
+      }
+    },
+    "public": true,
+    "created_at": "2020-09-24T10:05:37Z",
+    "updated_at": "2020-09-24T10:05:38Z",
+    "description": "2",
+    "comments": 0,
+    "user": null,
+    "comments_url": "https://api.github.com/gists/e746c755bfe03c4b7eaa9e3e77f709f7/comments",
+    "owner": {
+      "login": "09054109i",
+      "id": 67500835,
+      "node_id": "MDQ6VXNlcjY3NTAwODM1",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/67500835?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/09054109i",
+      "html_url": "https://github.com/09054109i",
+      "followers_url": "https://api.github.com/users/09054109i/followers",
+      "following_url": "https://api.github.com/users/09054109i/following{/other_user}",
+      "gists_url": "https://api.github.com/users/09054109i/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/09054109i/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/09054109i/subscriptions",
+      "organizations_url": "https://api.github.com/users/09054109i/orgs",
+      "repos_url": "https://api.github.com/users/09054109i/repos",
+      "events_url": "https://api.github.com/users/09054109i/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/09054109i/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "truncated": false
+  },
+  {
+    "url": "https://api.github.com/gists/1c352684c5c342e7ee5d19d1bb6d49ae",
+    "forks_url": "https://api.github.com/gists/1c352684c5c342e7ee5d19d1bb6d49ae/forks",
+    "commits_url": "https://api.github.com/gists/1c352684c5c342e7ee5d19d1bb6d49ae/commits",
+    "id": "1c352684c5c342e7ee5d19d1bb6d49ae",
+    "node_id": "MDQ6R2lzdDFjMzUyNjg0YzVjMzQyZTdlZTVkMTlkMWJiNmQ0OWFl",
+    "git_pull_url": "https://gist.github.com/1c352684c5c342e7ee5d19d1bb6d49ae.git",
+    "git_push_url": "https://gist.github.com/1c352684c5c342e7ee5d19d1bb6d49ae.git",
+    "html_url": "https://gist.github.com/1c352684c5c342e7ee5d19d1bb6d49ae",
+    "files": {
+      "1": {
+        "filename": "1",
+        "type": "text/plain",
+        "language": null,
+        "raw_url": "https://gist.githubusercontent.com/09054109i/1c352684c5c342e7ee5d19d1bb6d49ae/raw/56a6051ca2b02b04ef92d5150c9ef600403cb1de/1",
+        "size": 1
+      }
+    },
+    "public": true,
+    "created_at": "2020-09-24T09:45:11Z",
+    "updated_at": "2020-09-24T09:45:11Z",
+    "description": "1",
+    "comments": 0,
+    "user": null,
+    "comments_url": "https://api.github.com/gists/1c352684c5c342e7ee5d19d1bb6d49ae/comments",
+    "owner": {
+      "login": "09054109i",
+      "id": 67500835,
+      "node_id": "MDQ6VXNlcjY3NTAwODM1",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/67500835?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/09054109i",
+      "html_url": "https://github.com/09054109i",
+      "followers_url": "https://api.github.com/users/09054109i/followers",
+      "following_url": "https://api.github.com/users/09054109i/following{/other_user}",
+      "gists_url": "https://api.github.com/users/09054109i/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/09054109i/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/09054109i/subscriptions",
+      "organizations_url": "https://api.github.com/users/09054109i/orgs",
+      "repos_url": "https://api.github.com/users/09054109i/repos",
+      "events_url": "https://api.github.com/users/09054109i/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/09054109i/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "truncated": false
+  }
+]
+  // console.log(data)
+ 
+  return data
+}
+
 module.exports = function (api) {
   api.loadSource(async ({ addCollection }) => {
     // Use the Data Store API here: https://gridsome.org/docs/data-store-api/
-    const service = initRequestService()
-    serviceInter(service)
-
+     
+    
     const collection = addCollection('Project')
-    const collection1 = addCollection('Project1')
+    const collectionFollower = addCollection('Follower')
+    const collectionFollowing = addCollection('Following')
+    const collectionBlog = addCollection('Blog')
 
-    const data = await getAllProject(service)
-    for (const item of data) {
+    const dataProject = await getAllProject()
+    const dataFollower = await getAllFollower()
+    const dataFollowing = await getAllFollowing()
+    const dataBlog = await getAllBlog()
+
+    for (const item of dataProject) {
           collection.addNode({
           id: item.id,
           name: item.name,
@@ -277,21 +618,35 @@ module.exports = function (api) {
       })
     }
 
-    for (const item of data) {
-        collection1.addNode({
-        id: item.id,
-        title: item.name,
-        url: item.html_url,
-        description: item.description,
-        stargazersCount: item.stargazers_count,
-        watchersCount: item.watchers_count,
-        language: item.language,
-        license: item.license ? item.license.spdx_id : null,
-        createTime: item.created_at,
-        updateTime: item.updated_at,
-        hide: false,
-    })
-  }
+    for (const item of dataFollower) {
+      collectionFollower.addNode({
+      id: item.id,
+      name: item.login,
+      avatarUrl: item.avatar_url,
+      htmlUrl: item.html_url,
+      })
+    }
+
+    for (const item of dataFollowing) {
+      collectionFollowing.addNode({
+      id: item.id,
+      name: item.login,
+      avatarUrl: item.avatar_url,
+      htmlUrl: item.html_url,
+      })
+    }
+
+    for (const item of dataBlog) {
+      collectionBlog.addNode({
+      id: item.id,
+      title: Object.keys(item.files)[0],
+      description: item.description,
+      createTime: item.created_at,
+      updateTime: item.updated_at,
+      hide: false,
+      })
+    }
+
   })
 
   api.createPages(({ createPage }) => {

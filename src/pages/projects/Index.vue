@@ -16,6 +16,9 @@
                                 <a style="text-decoration:none;cursor:pointer" @click="goDetails(item.node.id)">
                                     <i class="el-icon-service"></i>&nbsp;&nbsp; {{item.node.name}}
                                 </a>
+                                <!-- <g-link style="text-decoration:none;cursor:pointer" :to="'/projects/'+item.node.id">
+                                    <i class="el-icon-service"></i>&nbsp;&nbsp; {{item.node.name}}
+                                </g-link> -->
                             </span>
                         </el-col>
                         <el-col :span="8">
@@ -164,7 +167,7 @@
                 }
             },
             goDetails(id) {
-                this.$router.push("/posts/" + id)
+                this.$router.push("/project/" + id)
             },
             goGithub(url) {
                 window.open(url)

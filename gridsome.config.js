@@ -10,7 +10,7 @@ module.exports = {
   templates:{
     Project:[
       {
-        path:'/posts/:id',
+        path:'/project/:id',
         component:'./src/templates/Project.vue'
       }
     ]
