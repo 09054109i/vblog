@@ -13,6 +13,12 @@ module.exports = {
         path:'/project/:id',
         component:'./src/templates/Project.vue'
       }
+    ],
+    Follower:[
+      {
+        path:'/follower/:id',
+        component:'./src/templates/Follower.vue'
+      }
     ]
   }
 }

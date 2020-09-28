@@ -9,7 +9,7 @@
                                 <el-col :span="8" v-for="(item,index) in $page.followers.edges" :key="'followers'+index" style="padding: 10px">
                                     <el-card shadow="hover" style="font-size: 13px;color: #606266;line-height: 20px">
                                         <i class="el-icon-star-off"></i>&emsp;
-                                        <a @click="$router.push(`/socials/${item.node.id}`)" style=" text-decoration:none;cursor:pointer">{{item.node.name}}</a>
+                                        <a @click="$router.push(`/follower/${item.node.id}`)" style=" text-decoration:none;cursor:pointer">{{item.node.name}}</a>
                                         <br>
                                         <i class="el-icon-message"></i>&emsp;
                                         <a :href="item.node.htmlUrl" target="_blank" style=" text-decoration:none;cursor:pointer">TA的主页</a>
@@ -39,7 +39,7 @@
                                 <el-col :span="8" v-for="(item,index) in $page.followings.edges" :key="'following'+index" style="padding: 10px">
                                     <el-card shadow="hover" style="font-size: 13px;color: #606266;line-height: 20px">
                                         <i class="el-icon-star-off"></i>&emsp;
-                                        <a @click="$router.push(`/socials/${item.node.id}`)" style=" text-decoration:none;cursor:pointer">{{item.node.name}}</a>
+                                        <a @click="$router.push(`/follower/${item.node.id}`)" style=" text-decoration:none;cursor:pointer">{{item.node.name}}</a>
                                         <br>
                                         <i class="el-icon-message"></i>&emsp;
                                         <a :href="item.node.htmlUrl" target="_blank" style=" text-decoration:none;cursor:pointer">TA的主页</a>
