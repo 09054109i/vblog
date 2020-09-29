@@ -72,6 +72,11 @@
     import ProjectApi from '@/api/project'
     export default {
         name:"ProjectDetail",
+        metaInfo(){
+            return{
+                    title: this.$page.project.name
+                }
+        },
         data() {
             return {
                 project: {

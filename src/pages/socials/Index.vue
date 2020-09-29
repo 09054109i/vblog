@@ -107,6 +107,11 @@
     import UserApi from '@/api/user'
     export default {
         name:"SocialIndex",
+        metaInfo(){
+            return{
+                    title: "Social Home"
+                }
+        },
         components: {
             Pager
         },

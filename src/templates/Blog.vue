@@ -28,11 +28,24 @@
     </div>
     </Layout>
 </template>
+<page-query>
+    query($id: ID!){
+        blog(id:$id){
+            id
+            title
+        }
+    }
+</page-query>
 <script>
     import { mapGetters } from 'vuex'
     import GistApi from '@/api/gist'
     export default {
         name:"BlogDetetail",
+        metaInfo(){
+            return{
+                    title: this.$page.blog.title
+                }
+        },
         data() {
             return {
                 blog: {

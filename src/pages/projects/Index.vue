@@ -109,6 +109,11 @@
     import ProjectApi from "@/api/project"
     export default {
         name:"ProjectIndex",
+        metaInfo(){
+            return{
+                    title: "Project Home"
+                }
+        },
         components: {
             Pager
         },

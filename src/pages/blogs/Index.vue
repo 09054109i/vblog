@@ -80,6 +80,11 @@ query($page: Int){
     import GistApi from '@/api/gist'
     export default {
         name:"blogIndex",
+        metaInfo(){
+            return{
+                    title: "Blog Home"
+                }
+        },
         components: {
             Pager
         },

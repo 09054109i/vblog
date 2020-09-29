@@ -60,6 +60,11 @@
     import UserApi from '@/api/user'
     export default {
         name:"followerdetail",
+        metaInfo(){
+            return{
+                    title: this.$page.follower.name
+                }
+        },
         data() {
             return {
                 loading: false,
