@@ -6,7 +6,7 @@
 // To restart press CTRL + C in terminal and run `gridsome develop`
 const axios = require('axios')
 const baseUrl = "https://api.github.com"
-const token = "365c0527da8d30ba957c6e419f78f9ed665fda58"
+const token = "54ed417fcb4ccb7a664c43b7e4972c93a5f6c4ef"
 const githubUsername = "09054109i"
 
 // const store = require("./src/store/index.js")
@@ -621,7 +621,7 @@ module.exports = function (api) {
     for (const item of dataFollower) {
       collectionFollower.addNode({
       id: item.id,
-      login: item.login,
+      name: item.login,
       avatarUrl: item.avatar_url,
       htmlUrl: item.html_url,
       })
@@ -630,7 +630,7 @@ module.exports = function (api) {
     for (const item of dataFollowing) {
       collectionFollowing.addNode({
       id: item.id,
-      login: item.login,
+      name: item.login,
       avatarUrl: item.avatar_url,
       htmlUrl: item.html_url,
       })
