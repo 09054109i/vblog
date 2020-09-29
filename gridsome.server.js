@@ -268,11 +268,6 @@ const getAllProject = async ()=>{
 }
 
 const getAllFollower = async ()=>{
-  const query={
-      page: 1,
-      pageSize: 5,
-      pageNumber: 1
-  }
   // const url = `/users/${githubUsername}/repos?page=${query.page}&per_page=${query.pageSize}&access_token=${token}`
   const url =  `/users/${githubUsername}/followers?access_token=${token}`
   console.log(url)
@@ -347,11 +342,6 @@ const getAllFollower = async ()=>{
 }
 
 const getAllFollowing = async ()=>{
-  const query={
-      page: 1,
-      pageSize: 5,
-      pageNumber: 1
-  }
   // const url = `/users/${githubUsername}/repos?page=${query.page}&per_page=${query.pageSize}&access_token=${token}`
   const url =  `/users/${githubUsername}/following?access_token=${token}`
   console.log(url)
@@ -426,11 +416,6 @@ const getAllFollowing = async ()=>{
 }
 
 const getAllBlog = async ()=>{
-  const query={
-      page: 1,
-      pageSize: 5,
-      pageNumber: 1
-  }
   // const url = `/users/${githubUsername}/repos?page=${query.page}&per_page=${query.pageSize}&access_token=${token}`
   const url =  `/users/${githubUsername}/gists?access_token=${token}`
   console.log(url)
