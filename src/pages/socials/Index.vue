@@ -1,7 +1,7 @@
 <template>
     <Layout>
         <el-card shadow="never" style="min-height: 400px;margin-bottom: 20px;padding: 0px 0px 20px 0px">
-            <el-tabs v-model="activeTab" type="card" @tab-click="onSelect">
+            <el-tabs v-model="activeTab" type="card">
                 <el-tab-pane :label="'粉丝 '+followersTotal" name="followers" style="padding: 5px">
                     <div v-loading="followers.loading">
                         <div v-if="$page.followers.edges.length">

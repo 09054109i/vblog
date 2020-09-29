@@ -8,37 +8,39 @@
             <el-button type="primary" icon="el-icon-edit" round plain style="float: right;" @click="goAdd">写博文</el-button>
         </el-card>
 
-        <div v-if="blogs&&blogs.length>0">
-            <el-card shadow="hover" v-for="(item,index) in blogs" :key="'p'+index" style="margin-bottom: 20px" v-if="!item.hide">
+        <div v-if="$page.blogs.edges&&$page.blogs.edges.length>0">
+            <el-card shadow="hover" v-for="(item,index) in $page.blogs.edges" :key="'p'+index" style="margin-bottom: 20px" v-if="!item.node.hide">
                 <div slot="header">
                     <el-row>
                         <el-col :span="16">
                             <span>
-                                <a style="text-decoration:none;cursor:pointer" @click="goDetails(item.id)">
-                                    <i class="el-icon-edit-outline"></i>&nbsp;&nbsp; {{item.title}}
+                                <a style="text-decoration:none;cursor:pointer" @click="goDetails(item.node.id)">
+                                    <i class="el-icon-edit-outline"></i>&nbsp;&nbsp; {{item.node.title}}
                                 </a>
                             </span>
                         </el-col>
                         <el-col :span="8">
                             <div style="text-align: right;">
-                                <el-button @click="$share('/user/blog/details/'+item.id)" style="padding: 3px 0" type="text" icon="el-icon-share"></el-button>
-                                <el-button @click="editBlog(index)" style="padding: 3px 0" type="text" icon="el-icon-edit" v-if="token"></el-button>
-                                <el-button @click="deleteBlog(index)" style="padding: 3px 0" type="text" icon="el-icon-delete" v-if="token"></el-button>
+                                <el-button @click="$share('/user/blog/details/'+item.node.id)" style="padding: 3px 0" type="text" icon="el-icon-share"></el-button>
+                                <el-button @click="editBlog(index)" style="padding: 3px 0" type="text" icon="el-icon-edit"></el-button>
+                                <el-button @click="deleteBlog(index)" style="padding: 3px 0" type="text" icon="el-icon-delete"></el-button>
                             </div>
                         </el-col>
                     </el-row>
                 </div>
                 <div style="font-size: 0.9rem;line-height: 1.5;color: #606c71;">
-                    最近更新 {{item.updateTime}}
+                    最近更新 {{item.node.updateTime}}
                 </div>
                 <div style="font-size: 1.1rem;line-height: 1.5;color: #303133;padding: 10px 0px 0px 0px">
-                    {{item.description}}
+                    {{item.node.description}}
                 </div>
             </el-card>
             <div style="text-align: center">
-                <el-pagination @current-change="list" background layout="prev, pager, next" :current-page.sync="query.page" :page-size="query.pageSize"
+                <!-- <el-pagination @current-change="list" background layout="prev, pager, next" :current-page.sync="query.page" :page-size="query.pageSize"
                     :total="query.pageNumber*query.pageSize">
-                </el-pagination>
+                </el-pagination> -->
+                <!-- Pager -->
+                <Pager :info="$page.blogs.pageInfo"/>
             </div>
 
         </div>
@@ -52,11 +54,35 @@
     </Layout>
 
 </template>
+<page-query>
+query($page: Int){
+	blogs: allBlog (perPage:5,page:$page) @paginate{
+        pageInfo {
+            totalPages
+            currentPage
+        }
+		edges{
+			node{
+				id
+				title
+                description
+                createTime
+                updateTime
+                hide
+			}
+		}
+	}
+}
+</page-query>
 <script>
+    import { Pager } from 'gridsome'
     import { mapGetters } from 'vuex'
     import GistApi from '@/api/gist'
     export default {
         name:"blogIndex",
+        components: {
+            Pager
+        },
         data() {
             return {
                 query: {
@@ -75,7 +101,7 @@
             ])
         },
         mounted() {
-            this.list()
+            // this.list()
         },
         methods: {
             list() {
@@ -116,7 +142,7 @@
                     })
                     return
                 }
-                this.$router.push('/user/blog/edit/' + this.blogs[index].id)
+                this.$router.push('/blogs/' + this.$page.blogs.edges[index].node.id)
             },
             deleteBlog(index) {
                 this.$confirm('是否永久删除该博客?', '提示', {
@@ -124,7 +150,7 @@
                     cancelButtonText: '取消',
                     type: 'warning'
                 }).then(() => {
-                    let blog = this.blogs[index]
+                    let blog = this.$page.blogs.edges[index].node
                     GistApi.delete(blog.id).then((result) => {
                         this.$message({
                             message: '删除成功',
@@ -142,10 +168,10 @@
                     })
                     return
                 }
-                this.$router.push('/user/blog/add')
+                this.$router.push('/blogs/add')
             },
             goDetails(id) {
-                this.$router.push("/user/blog/details/" + id)
+                this.$router.push("/blog/" + id)
             }
         }
     }

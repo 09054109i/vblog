@@ -19,6 +19,12 @@ module.exports = {
         path:'/follower/:id',
         component:'./src/templates/Follower.vue'
       }
+    ],
+    Blog:[
+      {
+        path:'/blog/:id',
+        component:'./src/templates/Blog.vue'
+      }
     ]
   }
 }

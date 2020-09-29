@@ -26,6 +26,7 @@ const token = {
 
     actions: {
         Authentication({ commit,rootState }, accessToken) {
+            // commit('SET_TOKEN', accessToken)
             UserApi.verifyToken(accessToken).then((response) => {
 
                 let result = response.data

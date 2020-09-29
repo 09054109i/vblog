@@ -6,7 +6,7 @@
 // To restart press CTRL + C in terminal and run `gridsome develop`
 const axios = require('axios')
 const baseUrl = "https://api.github.com"
-const token = "6d9a345019577b3f472f484d3c51f9f16ffb496d"
+const token = "62a0ae1ab4f1770ef711fb726e32acc617b5745a"
 const githubUsername = "09054109i"
 
 // const store = require("./src/store/index.js")

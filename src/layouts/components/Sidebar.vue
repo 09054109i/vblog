@@ -51,7 +51,7 @@
                                         }
                                     },
                                     {
-                                        path: '/social',
+                                        path: '/socials',
                                         meta: {
                                             type: "social",
                                             icon: 'el-icon-mobile-phone',
@@ -59,7 +59,7 @@
                                         }
                                     },
                                     {
-                                        path: '/blog',
+                                        path: '/blogs',
                                         meta: {
                                             type: "blog",
                                             icon: 'el-icon-edit-outline',
