@@ -181,7 +181,7 @@
         mounted() {
             this.$store.dispatch("Init")
             this.$store.dispatch("GetInfo")
-            this.$setTitle(this.$route.meta.title)
+            // this.$setTitle(this.$route.meta.title)
             let windowSize = this.$util.getWindowSize()
             let pathArr = this.$route.path.split("/")
             if (pathArr[1] == "user" && windowSize.height > windowSize.width * 1.2) {

@@ -15,7 +15,7 @@
                 </el-form-item>
                 <el-form-item>
                     <el-button type="primary" @click="onSubmit" :loading="submitButton.loading" :disabled="submitButton.disabled">修改</el-button>
-                    <el-button @click="$router.push('/user/blog/main')">返回</el-button>
+                    <el-button @click="$router.push('/blogs')">返回</el-button>
                 </el-form-item>
             </el-form>
         </el-card>

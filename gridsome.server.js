@@ -6,7 +6,7 @@
 // To restart press CTRL + C in terminal and run `gridsome develop`
 const axios = require('axios')
 const baseUrl = "https://api.github.com"
-const token = "62a0ae1ab4f1770ef711fb726e32acc617b5745a"
+const token = "365c0527da8d30ba957c6e419f78f9ed665fda58"
 const githubUsername = "09054109i"
 
 // const store = require("./src/store/index.js")
@@ -268,6 +268,11 @@ const getAllProject = async ()=>{
 }
 
 const getAllFollower = async ()=>{
+  const query={
+      page: 1,
+      pageSize: 5,
+      pageNumber: 1
+  }
   // const url = `/users/${githubUsername}/repos?page=${query.page}&per_page=${query.pageSize}&access_token=${token}`
   const url =  `/users/${githubUsername}/followers?access_token=${token}`
   console.log(url)
@@ -342,6 +347,11 @@ const getAllFollower = async ()=>{
 }
 
 const getAllFollowing = async ()=>{
+  const query={
+      page: 1,
+      pageSize: 5,
+      pageNumber: 1
+  }
   // const url = `/users/${githubUsername}/repos?page=${query.page}&per_page=${query.pageSize}&access_token=${token}`
   const url =  `/users/${githubUsername}/following?access_token=${token}`
   console.log(url)
@@ -416,6 +426,11 @@ const getAllFollowing = async ()=>{
 }
 
 const getAllBlog = async ()=>{
+  const query={
+      page: 1,
+      pageSize: 5,
+      pageNumber: 1
+  }
   // const url = `/users/${githubUsername}/repos?page=${query.page}&per_page=${query.pageSize}&access_token=${token}`
   const url =  `/users/${githubUsername}/gists?access_token=${token}`
   console.log(url)
@@ -606,7 +621,7 @@ module.exports = function (api) {
     for (const item of dataFollower) {
       collectionFollower.addNode({
       id: item.id,
-      name: item.login,
+      login: item.login,
       avatarUrl: item.avatar_url,
       htmlUrl: item.html_url,
       })
@@ -615,7 +630,7 @@ module.exports = function (api) {
     for (const item of dataFollowing) {
       collectionFollowing.addNode({
       id: item.id,
-      name: item.login,
+      login: item.login,
       avatarUrl: item.avatar_url,
       htmlUrl: item.html_url,
       })

@@ -91,10 +91,10 @@
                     })
                     return
                 }
-                this.$router.push('/user/blog/edit/' + this.blog.id)
+                this.$router.push('/blogs/' + this.blog.id)
             },
             more() {
-                this.$router.push('/user/blog/main')
+                this.$router.push('/blogs')
             }
         }
     }
